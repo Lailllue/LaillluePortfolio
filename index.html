@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anna Artiukhova – Game Designer Portfolio</title>
+    <style>
+        :root {
+            --bg: #050710;
+            --bg-card: #101322;
+            --bg-soft: #181b2b;
+            --accent: #f25f5c;
+            --accent-soft: rgba(242, 95, 92, 0.15);
+            --text: #f9fafb;
+            --text-muted: #9ca3af;
+            --border-soft: #262c40;
+            --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.45);
+            --radius-lg: 18px;
+            --radius-xl: 22px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: radial-gradient(circle at top, #161a2b 0, #050710 55%, #050510 100%);
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .page {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 32px 16px 64px;
+        }
+
+        @media (min-width: 768px) {
+            .page {
+                padding: 40px 24px 80px;
+            }
+        }
+
+        /* HEADER */
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: linear-gradient(to bottom, rgba(5,7,16,0.98), rgba(5,7,16,0.8), transparent);
+            backdrop-filter: blur(16px);
+            margin-bottom: 24px;
+        }
+
+        .header-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 6px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        .name-line {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+        }
+
+        .name {
+            font-size: 1.35rem;
+            font-weight: 650;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+
+        .role {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--text-muted);
+        }
+
+        .sub-line {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .sub-line span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* SECTION TITLES */
+
+        .section {
+            margin-top: 32px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 18px;
+            gap: 10px;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title::before {
+            content: "";
+            width: 18px;
+            height: 2px;
+            border-radius: 999px;
+            background: var(--accent);
+        }
+
+        .section-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* GAME CARDS */
+
+        .games {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .game-card {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 18px 18px 20px;
+            border-radius: var(--radius-lg);
+            background: radial-gradient(circle at top left, rgba(242,95,92,0.12), transparent 55%), var(--bg-card);
+            border: 1px solid rgba(82, 97, 155, 0.5);
+            box-shadow: var(--shadow-soft);
+        }
+
+        @media (min-width: 800px) {
+            .game-card {
+                flex-direction: row;
+                align-items: stretch;
+            }
+        }
+
+        .game-info {
+            flex: 1.1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .game-title {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .game-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            color: var(--text-muted);
+        }
+
+        .game-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .game-note {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            opacity: 0.9;
+        }
+
+        .game-media {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .video-frame {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #020617;
+            border: 1px solid rgba(148, 163, 184, 0.3);
+        }
+
+        video, iframe {
+            width: 100%;
+            display: block;
+        }
+
+        .play-hint {
+            position: absolute;
+            bottom: 8px;
+            right: 10px;
+            font-size: 0.78rem;
+            background: rgba(15,23,42,0.85);
+            padding: 3px 8px;
+            border-radius: 999px;
+            color: var(--text-muted);
+        }
+
+        .game-link {
+            font-size: 0.88rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            align-self: flex-start;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: var(--accent-soft);
+        }
+
+        .game-link span.arrow {
+            font-size: 0.95rem;
+        }
+
+        /* CERTIFICATES */
+
+        .certs-wrapper {
+            padding: 14px 12px 16px;
+            border-radius: var(--radius-xl);
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.18), rgba(147, 51, 234, 0.18));
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .certs-strip {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            scroll-snap-type: x mandatory;
+        }
+
+        .certs-strip::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .certs-strip::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .certs-strip::-webkit-scrollbar-thumb {
+            background: rgba(148, 163, 184, 0.8);
+            border-radius: 999px;
+        }
+
+        .cert-card {
+            flex: 0 0 auto;
+            width: 260px;
+            max-width: 80vw;
+            border-radius: 14px;
+            background: rgba(15, 23, 42, 0.96);
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            overflow: hidden;
+            scroll-snap-align: start;
+        }
+
+        .cert-img {
+            width: 100%;
+            display: block;
+        }
+
+        .cert-body {
+            padding: 8px 10px 10px;
+            font-size: 0.8rem;
+        }
+
+        .cert-title {
+            font-weight: 500;
+            margin-bottom: 3px;
+        }
+
+        .cert-meta {
+            color: var(--text-muted);
+            font-size: 0.78rem;
+        }
+
+        .cert-hint {
+            margin-top: 8px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* RESUME */
+
+        .resume-wrapper {
+            border-radius: var(--radius-xl);
+            background: var(--bg-soft);
+            border: 1px solid var(--border-soft);
+            box-shadow: var(--shadow-soft);
+            padding: 14px 14px 16px;
+        }
+
+        .resume-frame {
+            width: 100%;
+            height: 480px;
+            border-radius: 12px;
+            border: 1px solid rgba(148, 163, 184, 0.55);
+            background: #020617;
+        }
+
+        .resume-hint {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            margin-top: 32px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-soft);
+            padding-top: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="name-line">
+                <div class="name">ANNA ARTIUKHOVA</div>
+                <div class="role">GAME DESIGNER</div>
+            </div>
+            <div class="sub-line">
+                <span>Game Designer | Unity Developer | C# | Prototyping &amp; Player Experience</span>
+                <span>•</span>
+                <span>Tel: +355 688 084 101</span>
+                <span>•</span>
+                <span><a href="mailto:dorov.ya.anet@gmail.com">dorov.ya.anet@gmail.com</a></span>
+                <span>•</span>
+                <span>
+                    <a href="https://www.linkedin.com/in/%D0%B0%D0%BD%D0%BD%D0%B0-%D0%B0%D1%80%D1%82%D1%8E%D1%85%D0%BE%D0%B2%D0%B0-700b97224" target="_blank" rel="noopener">
+                        LinkedIn
+                    </a>
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- GAMES SECTION -->
+        <section class="section" id="games">
+            <div class="section-header">
+                <h2 class="section-title">Games</h2>
+                <div class="section-subtitle">Unity prototypes and complete projects published on itch.io</div>
+            </div>
+
+            <div class="games">
+                <!-- GAME 1 – Haunted House (on top) -->
+                <article class="game-card">
+                    <div class="game-info">
+                        <h3 class="game-title">Haunted House</h3>
+                        <div class="game-tags">
+                            <span class="tag">3D Adventure</span>
+                            <span class="tag">Horror</span>
+                            <span class="tag">Narrative</span>
+                            <span class="tag">Unity</span>
+                        </div>
+                        <p class="game-desc">
+                            Jimmy, a quiet boy who never enjoyed much popularity at school, suddenly finds himself
+                            trapped inside a haunted house filled with restless spirits. To escape and return to his own
+                            world, he must explore the eerie halls, solve mysteries, and confront supernatural dangers.
+                        </p>
+                        <p class="game-note">
+                            This strange and terrifying place becomes an unexpected chance for Jimmy to prove himself — 
+                            to discover courage he never knew he had and transform from an overlooked outsider into a true hero.
+                        </p>
+                    </div>
+                    <div class="game-media">
+                        <div class="video-frame">
+                            <!-- TODO: replace HAUNTED_HOUSE_VIDEO_ID with your real YouTube video ID -->
+                            <iframe
+                                src="https://www.youtube.com/embed/HAUNTED_HOUSE_VIDEO_ID"
+                                title="Haunted House gameplay"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+                        <a class="game-link" href="https://lailllue.itch.io/hauntedhouse" target="_blank" rel="noopener">
+                            <span class="arrow">↗</span>
+                            <span>Play Haunted House on itch.io</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- GAME 2 – 2D Escape Game -->
+                <article class="game-card">
+                    <div class="game-info">
+                        <h3 class="game-title">2D Escape Game</h3>
+                        <div class="game-tags">
+                            <span class="tag">2D Puzzle</span>
+                            <span class="tag">Room Escape</span>
+                            <span class="tag">Short Experience</span>
+                            <span class="tag">Unity</span>
+                        </div>
+                        <p class="game-desc">
+                            A small game with a single level where the player must find a way out of a locked room.
+                            The focus is on simple, readable interactions and clear feedback for solving the escape puzzle.
+                        </p>
+                    </div>
+                    <div class="game-media">
+                        <div class="video-frame">
+                            <!-- TODO: replace ESCAPE_VIDEO_ID with your real YouTube video ID -->
+                            <iframe
+                                src="https://www.youtube.com/embed/ESCAPE_VIDEO_ID"
+                                title="2D Escape Game gameplay"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+                        <a class="game-link" href="https://lailllue.itch.io/2d-escape-game" target="_blank" rel="noopener">
+                            <span class="arrow">↗</span>
+                            <span>Play 2D Escape Game on itch.io</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- GAME 3 – At the Edge of Galaxy -->
+                <article class="game-card">
+                    <div class="game-info">
+                        <h3 class="game-title">At the Edge of Galaxy</h3>
+                        <div class="game-tags">
+                            <span class="tag">3D Platformer</span>
+                            <span class="tag">Sci-Fi</span>
+                            <span class="tag">Exploration</span>
+                            <span class="tag">Unity</span>
+                        </div>
+                        <p class="game-desc">
+                            A 3D platformer where a small robot explores a distant, unfamiliar planet inhabited by
+                            hostile machines. The game focuses on traversal, jumping challenges, and learning the
+                            layout of the alien environment.
+                        </p>
+                    </div>
+                    <div class="game-media">
+                        <div class="video-frame">
+                            <!-- TODO: replace GALAXY_VIDEO_ID with your real YouTube video ID -->
+                            <iframe
+                                src="https://www.youtube.com/embed/GALAXY_VIDEO_ID"
+                                title="At the Edge of Galaxy gameplay"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+                        <a class="game-link" href="https://lailllue.itch.io/at-the-adge-of-galaxy" target="_blank" rel="noopener">
+                            <span class="arrow">↗</span>
+                            <span>Play At the Edge of Galaxy on itch.io</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- GAME 4 – Game Demon -->
+                <article class="game-card">
+                    <div class="game-info">
+                        <h3 class="game-title">Game Demon</h3>
+                        <div class="game-tags">
+                            <span class="tag">2D Action</span>
+                            <span class="tag">Pixel Art</span>
+                            <span class="tag">Fantasy</span>
+                            <span class="tag">Unity</span>
+                        </div>
+                        <p class="game-desc">
+                            A 2D pixel art game in a fantasy setting with atmospheric music. The focus is on combat,
+                            moment-to-moment feel and creating a satisfying game flow for the player.
+                        </p>
+                    </div>
+                    <div class="game-media">
+                        <div class="video-frame">
+                            <!-- TODO: replace DEMON_VIDEO_ID with your real YouTube video ID -->
+                            <iframe
+                                src="https://www.youtube.com/embed/DEMON_VIDEO_ID"
+                                title="Game Demon gameplay"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+                        <a class="game-link" href="https://lailllue.itch.io/2d-game-demon" target="_blank" rel="noopener">
+                            <span class="arrow">↗</span>
+                            <span>Play Game Demon on itch.io</span>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- CERTIFICATES SECTION -->
+        <section class="section" id="certificates">
+            <div class="section-header">
+                <h2 class="section-title">Certificates</h2>
+                <div class="section-subtitle">Selected online courses in game design &amp; development</div>
+            </div>
+
+            <div class="certs-wrapper">
+                <div class="certs-strip">
+                    <div class="cert-card">
+                        <img class="cert-img" src="certs/coursera-2d-shooter.jpg" alt="Game Design and Development 1: 2D Shooter certificate" />
+                        <div class="cert-body">
+                            <div class="cert-title">Game Design and Development 1: 2D Shooter</div>
+                            <div class="cert-meta">Michigan State University • Coursera • 2025</div>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <img class="cert-img" src="certs/coursera-3d-platformer.jpg" alt="Game Design and Development 4: 3D Platformer certificate" />
+                        <div class="cert-body">
+                            <div class="cert-title">Game Design and Development 4: 3D Platformer</div>
+                            <div class="cert-meta">Michigan State University • Coursera • 2025</div>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <img class="cert-img" src="certs/coursera-intro-csharp-unity.jpg" alt="Introduction to C# Programming and Unity certificate" />
+                        <div class="cert-body">
+                            <div class="cert-title">Introduction to C# Programming and Unity</div>
+                            <div class="cert-meta">University of Colorado System • Coursera • 2024</div>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <img class="cert-img" src="certs/coursera-more-csharp-unity.jpg" alt="More C# Programming and Unity certificate" />
+                        <div class="cert-body">
+                            <div class="cert-title">More C# Programming and Unity</div>
+                            <div class="cert-meta">University of Colorado System • Coursera • 2025</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cert-hint">
+                    Scroll horizontally to browse certificates (trackpad, Shift + mouse wheel, or swipe on touch devices).
+                </div>
+            </div>
+        </section>
+
+        <!-- RESUME SECTION -->
+        <section class="section" id="resume">
+            <div class="section-header">
+                <h2 class="section-title">Resume</h2>
+                <div class="section-subtitle">PDF embedded with its own scroll inside the frame</div>
+            </div>
+
+            <div class="resume-wrapper">
+                <iframe
+                    class="resume-frame"
+                    src="Anna_Artiukhova_Game_Designer_CV.pdf"
+                    title="Resume PDF"
+                ></iframe>
+                <div class="resume-hint">
+                    If the PDF does not display, your browser may be blocking embedded PDFs.
+                    In that case, open the file directly from the GitHub repository.
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <span>© <span id="year"></span> Anna Artiukhova</span>
+        <span>Built as a game design portfolio (GitHub Pages)</span>
+    </footer>
+</div>
+
+<script>
+    // simple script to always show current year in the footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
