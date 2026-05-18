@@ -3,861 +3,1040 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Anna Artiukhova – Game Designer Portfolio</title>
+    <title>Anna Artiukhova – Level Designer & Scene Architect</title>
 
-    <!-- Fancy fonts for name and clean UI font for everything else -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600&family=Inter:wght@400;500;600&display=swap"
-        rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            /* Updated, more colorful palette */
-            --bg: #050316;
-            --bg-gradient-top: #221457;
-            --bg-card: #0f1024;
-            --bg-soft: #151335;
+            --bg: #05070d;
+            --bg-deep: #02030a;
+            --panel: rgba(10, 14, 24, 0.82);
+            --panel-strong: rgba(13, 18, 31, 0.96);
+            --panel-soft: rgba(20, 28, 45, 0.72);
 
-            --accent: #ff6ac1;          /* pink */
-            --accent-alt: #8b5cf6;      /* violet */
-            --accent-soft: rgba(255, 106, 193, 0.15);
-            --accent-alt-soft: rgba(139, 92, 246, 0.18);
+            --gold: #d6b46a;
+            --gold-light: #f4df9f;
+            --blue-flame: #65d7ff;
+            --violet: #8b6cff;
+            --green: #7fd1a7;
 
-            --text: #f9fafb;
-            --text-muted: #a5b0c9;
-            --border-soft: #2b2f4d;
-            --shadow-soft: 0 22px 55px rgba(0, 0, 0, 0.6);
-            --radius-lg: 18px;
-            --radius-xl: 22px;
+            --text: #f6f1df;
+            --muted: #b8b0a2;
+            --muted-cool: #9fb1c5;
+            --border: rgba(214, 180, 106, 0.28);
+            --border-bright: rgba(244, 223, 159, 0.48);
+
+            --shadow: 0 28px 80px rgba(0, 0, 0, 0.62);
+            --glow: 0 0 28px rgba(101, 215, 255, 0.18), 0 0 36px rgba(214, 180, 106, 0.11);
+            --radius: 22px;
+            --radius-lg: 30px;
         }
 
         * {
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
-            padding: 0;
             font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background:
-                radial-gradient(circle at top, var(--bg-gradient-top) 0, #050316 50%, #020010 100%);
             color: var(--text);
-            line-height: 1.5;
+            background:
+                radial-gradient(circle at 12% 10%, rgba(101, 215, 255, 0.14), transparent 28%),
+                radial-gradient(circle at 82% 12%, rgba(214, 180, 106, 0.15), transparent 30%),
+                radial-gradient(circle at 50% 85%, rgba(139, 108, 255, 0.12), transparent 36%),
+                linear-gradient(180deg, #09111e 0%, #05070d 42%, #02030a 100%);
+            min-height: 100vh;
+            line-height: 1.6;
         }
 
-        .page {
-            max-width: 1120px;
-            margin: 0 auto;
-            padding: 32px 16px 64px;
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background:
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+            background-size: 56px 56px;
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent 70%);
+            opacity: 0.32;
         }
 
-        @media (min-width: 768px) {
-            .page {
-                padding: 40px 24px 80px;
-            }
-        }
-
-        /* HEADER */
-
-        .site-header {
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            background: linear-gradient(
-                to bottom,
-                rgba(5, 3, 22, 0.98),
-                rgba(5, 3, 22, 0.88),
-                transparent
-            );
-            backdrop-filter: blur(16px);
-            margin-bottom: 24px;
-        }
-
-        .header-inner {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 6px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--border-soft);
-        }
-
-        .name-line {
-            display: flex;
-            align-items: baseline;
-            gap: 10px;
-        }
-
-        .name {
-            font-family: "Baloo 2", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            font-size: 1.6rem;
-            font-weight: 600;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            background: linear-gradient(120deg, #ff6ac1, #ffb4e6, #8b5cf6);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 18px rgba(255, 106, 193, 0.5);
-        }
-
-        .role {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.18em;
-            color: var(--text-muted);
-        }
-
-        .sub-line {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .sub-line span {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background: radial-gradient(ellipse at center, transparent 48%, rgba(0, 0, 0, 0.42) 100%);
         }
 
         a {
-            color: var(--accent);
+            color: var(--gold-light);
             text-decoration: none;
-            transition: color 0.18s ease, text-shadow 0.18s ease;
+            transition: color 0.18s ease, text-shadow 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
         }
 
         a:hover {
-            color: #ffe0f4;
-            text-shadow: 0 0 10px rgba(255, 106, 193, 0.7);
+            color: #ffffff;
+            text-shadow: 0 0 14px rgba(244, 223, 159, 0.55);
         }
 
-        /* SECTION TITLES */
-
-        .section {
-            margin-top: 32px;
+        .page {
+            position: relative;
+            z-index: 1;
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 22px 16px 70px;
         }
 
-        .section-header {
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            margin-bottom: 18px;
-            gap: 10px;
-        }
-
-        .section-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .section-title::before {
-            content: "";
-            width: 18px;
-            height: 3px;
-            border-radius: 999px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-alt));
-            box-shadow: 0 0 10px rgba(139, 92, 246, 0.8);
-        }
-
-        .section-subtitle {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        /* GAME CARDS */
-
-        .games {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .game-card {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            padding: 18px 18px 20px;
-            border-radius: var(--radius-lg);
-            background:
-                radial-gradient(circle at top left, rgba(255, 106, 193, 0.18), transparent 55%),
-                radial-gradient(circle at bottom right, rgba(139, 92, 246, 0.22), transparent 55%),
-                var(--bg-card);
-            border: 1px solid rgba(148, 163, 184, 0.55);
-            box-shadow: var(--shadow-soft);
-        }
-
-        @media (min-width: 800px) {
-            .game-card {
-                flex-direction: row;
-                align-items: stretch;
+        @media (min-width: 820px) {
+            .page {
+                padding: 28px 24px 86px;
             }
         }
 
-        .game-info {
-            flex: 1.1;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .game-title {
-            font-size: 1rem;
-            font-weight: 600;
-        }
-
-        .game-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-
-        .tag {
-            font-size: 0.75rem;
-            padding: 3px 9px;
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            margin: 0 auto 22px;
+            border: 1px solid rgba(214, 180, 106, 0.16);
             border-radius: 999px;
-            background: radial-gradient(circle at top, rgba(255, 106, 193, 0.22), rgba(15, 23, 42, 0.96));
-            border: 1px solid rgba(139, 92, 246, 0.7);
-            color: #e5e7ff;
+            background: rgba(4, 7, 13, 0.72);
+            backdrop-filter: blur(18px);
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
         }
 
-        .game-desc {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        .game-note {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            opacity: 0.9;
-        }
-
-        .game-media {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .video-frame {
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            background: #050816;
-            border: 1px solid rgba(139, 92, 246, 0.8);
-            box-shadow: 0 0 22px rgba(139, 92, 246, 0.45);
-        }
-
-        video,
-        iframe {
-            width: 100%;
-            display: block;
-        }
-
-        .play-hint {
-            position: absolute;
-            bottom: 8px;
-            right: 10px;
-            font-size: 0.78rem;
-            background: rgba(15, 23, 42, 0.9);
-            padding: 3px 8px;
-            border-radius: 999px;
-            color: var(--text-muted);
-        }
-
-        .game-link {
-            font-size: 0.88rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            align-self: flex-start;
-            padding: 6px 12px;
-            border-radius: 999px;
-            background: linear-gradient(90deg, var(--accent-soft), var(--accent-alt-soft));
-            border: 1px solid rgba(255, 106, 193, 0.6);
-            box-shadow: 0 0 14px rgba(255, 106, 193, 0.45);
-            transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
-        }
-
-        .game-link span.arrow {
-            font-size: 0.95rem;
-        }
-
-        .game-link:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 0 18px rgba(255, 180, 230, 0.7);
-            background: linear-gradient(90deg, rgba(255, 180, 230, 0.3), rgba(139, 92, 246, 0.35));
-        }
-
-        /* CASE STUDIES (collapsible) */
-
-        .case-studies {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .case-item {
-            border-radius: var(--radius-lg);
-            background:
-                radial-gradient(circle at top left, rgba(255, 106, 193, 0.12), transparent 55%),
-                radial-gradient(circle at bottom right, rgba(139, 92, 246, 0.16), transparent 55%),
-                var(--bg-card);
-            border: 1px solid rgba(148, 163, 184, 0.55);
-            box-shadow: var(--shadow-soft);
-            overflow: hidden;
-        }
-
-        .case-item summary {
-            cursor: pointer;
-            list-style: none;
+        .topbar-inner {
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 14px;
-            padding: 16px 18px;
+            padding: 10px 14px 10px 18px;
         }
 
-        .case-item summary::-webkit-details-marker {
-            display: none;
-        }
-
-        .case-title {
+        .brand {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 0;
+            min-width: 0;
         }
 
-        .case-title h3 {
-            margin: 0;
-            font-size: 1rem;
-            font-weight: 600;
+        .brand-name {
+            font-family: "Cinzel", serif;
+            font-size: 0.96rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            white-space: nowrap;
         }
 
-        .case-meta {
+        .brand-role {
+            font-size: 0.72rem;
+            color: var(--muted-cool);
+            white-space: nowrap;
+        }
+
+        .nav {
+            display: none;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav a {
+            color: var(--muted);
             font-size: 0.82rem;
-            color: var(--text-muted);
-        }
-
-        .case-chevron {
-            width: 36px;
-            height: 36px;
+            padding: 7px 10px;
             border-radius: 999px;
+        }
+
+        .nav a:hover {
+            color: var(--text);
+            background: rgba(214, 180, 106, 0.1);
+        }
+
+        @media (min-width: 820px) {
+            .nav {
+                display: flex;
+            }
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            min-height: 570px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            background:
+                linear-gradient(90deg, rgba(2, 3, 10, 0.92) 0%, rgba(5, 7, 13, 0.64) 46%, rgba(5, 7, 13, 0.88) 100%),
+                radial-gradient(circle at 28% 45%, rgba(101, 215, 255, 0.18), transparent 18%),
+                radial-gradient(circle at 82% 22%, rgba(214, 180, 106, 0.18), transparent 28%),
+                linear-gradient(135deg, #101827 0%, #09111e 35%, #05070d 100%);
+            box-shadow: var(--shadow), var(--glow);
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 17% 68%, rgba(101, 215, 255, 0.16), transparent 4%),
+                radial-gradient(circle at 58% 38%, rgba(214, 180, 106, 0.12), transparent 6%),
+                linear-gradient(110deg, transparent 0%, rgba(214, 180, 106, 0.08) 48%, transparent 52%);
+            opacity: 0.9;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(to right, rgba(244, 223, 159, 0.08) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(244, 223, 159, 0.06) 1px, transparent 1px);
+            background-size: 110px 110px;
+            mask-image: linear-gradient(105deg, rgba(0,0,0,0.36), transparent 55%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
             display: grid;
-            place-items: center;
-            flex: 0 0 auto;
-            background: linear-gradient(90deg, var(--accent-soft), var(--accent-alt-soft));
-            border: 1px solid rgba(255, 106, 193, 0.6);
-            box-shadow: 0 0 14px rgba(255, 106, 193, 0.35);
-            transition: transform 0.18s ease, box-shadow 0.18s ease;
+            grid-template-columns: 1fr;
+            gap: 28px;
+            padding: 44px 22px;
+            min-height: 570px;
+            align-items: center;
         }
 
-        .case-item[open] .case-chevron {
-            transform: rotate(180deg);
-            box-shadow: 0 0 18px rgba(255, 180, 230, 0.55);
+        @media (min-width: 900px) {
+            .hero-content {
+                grid-template-columns: 1.05fr 0.95fr;
+                padding: 58px 54px;
+            }
         }
 
-        .case-body {
-            padding: 0 18px 18px;
-            color: var(--text-muted);
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
+            padding: 7px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(244, 223, 159, 0.34);
+            background: rgba(214, 180, 106, 0.08);
+            color: var(--gold-light);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+        }
+
+        .eyebrow::before {
+            content: "✦";
+            color: var(--blue-flame);
+            text-shadow: 0 0 16px rgba(101, 215, 255, 0.7);
+        }
+
+        h1 {
+            margin: 18px 0 12px;
+            font-family: "Cinzel", serif;
+            font-size: clamp(2.65rem, 7vw, 5.5rem);
+            line-height: 0.94;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .hero-title-accent {
+            display: block;
+            color: var(--gold-light);
+            text-shadow: 0 0 34px rgba(214, 180, 106, 0.28);
+        }
+
+        .hero-lead {
+            max-width: 680px;
+            margin: 0;
+            color: #d7d0c2;
+            font-size: 1.04rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 16px;
+            border-radius: 999px;
+            border: 1px solid rgba(244, 223, 159, 0.42);
+            background: rgba(214, 180, 106, 0.09);
+            color: var(--text);
+            font-weight: 600;
             font-size: 0.9rem;
         }
 
-        .case-body h4 {
-            margin: 16px 0 8px;
+        .btn-primary {
+            background: linear-gradient(135deg, rgba(214, 180, 106, 0.96), rgba(244, 223, 159, 0.72));
+            color: #171207;
+            border-color: rgba(244, 223, 159, 0.85);
+            box-shadow: 0 16px 35px rgba(214, 180, 106, 0.18);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .hero-panel {
+            position: relative;
+            border-radius: var(--radius);
+            background:
+                linear-gradient(180deg, rgba(12, 17, 29, 0.78), rgba(5, 7, 13, 0.88)),
+                radial-gradient(circle at top left, rgba(101, 215, 255, 0.14), transparent 52%);
+            border: 1px solid rgba(244, 223, 159, 0.24);
+            padding: 22px;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03), 0 22px 50px rgba(0, 0, 0, 0.42);
+        }
+
+        .hero-panel::before,
+        .project-card::before,
+        .section-panel::before {
+            content: "";
+            position: absolute;
+            inset: 10px;
+            border: 1px solid rgba(244, 223, 159, 0.12);
+            border-radius: calc(var(--radius) - 8px);
+            pointer-events: none;
+        }
+
+        .focus-list {
+            display: grid;
+            gap: 12px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .focus-list li {
+            display: flex;
+            gap: 10px;
+            color: var(--muted-cool);
+            font-size: 0.92rem;
+        }
+
+        .focus-list li::before {
+            content: "◇";
+            color: var(--gold-light);
+            flex: 0 0 auto;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .stat {
+            padding: 14px;
+            border-radius: 16px;
+            background: rgba(0, 0, 0, 0.22);
+            border: 1px solid rgba(101, 215, 255, 0.18);
+        }
+
+        .stat strong {
+            display: block;
+            font-family: "Cinzel", serif;
+            color: var(--gold-light);
+            font-size: 1.05rem;
+        }
+
+        .stat span {
+            display: block;
+            color: var(--muted);
+            font-size: 0.78rem;
+            margin-top: 3px;
+        }
+
+        .section {
+            margin-top: 42px;
+        }
+
+        .section-head {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+
+        @media (min-width: 760px) {
+            .section-head {
+                flex-direction: row;
+                align-items: end;
+                justify-content: space-between;
+            }
+        }
+
+        .section-kicker {
+            color: var(--gold-light);
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+        }
+
+        h2 {
+            margin: 0;
+            font-family: "Cinzel", serif;
+            font-size: clamp(1.55rem, 3vw, 2.35rem);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .section-description {
+            max-width: 520px;
+            color: var(--muted-cool);
+            font-size: 0.92rem;
+            margin: 0;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius);
+            background:
+                radial-gradient(circle at top left, rgba(101, 215, 255, 0.1), transparent 44%),
+                radial-gradient(circle at bottom right, rgba(214, 180, 106, 0.12), transparent 50%),
+                var(--panel-strong);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        @media (min-width: 900px) {
+            .project-card.featured {
+                display: grid;
+                grid-template-columns: 0.9fr 1.1fr;
+            }
+        }
+
+        .project-media {
+            position: relative;
+            min-height: 280px;
+            background:
+                radial-gradient(circle at 35% 30%, rgba(101, 215, 255, 0.28), transparent 16%),
+                radial-gradient(circle at 68% 58%, rgba(214, 180, 106, 0.18), transparent 22%),
+                linear-gradient(145deg, #182335, #070b13 72%);
+            border-bottom: 1px solid rgba(214, 180, 106, 0.18);
+        }
+
+        @media (min-width: 900px) {
+            .project-media {
+                border-bottom: 0;
+                border-right: 1px solid rgba(214, 180, 106, 0.18);
+            }
+        }
+
+        .project-media img {
+            width: 100%;
+            height: 100%;
+            min-height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .media-placeholder {
+            position: absolute;
+            inset: 22px;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            border: 1px dashed rgba(244, 223, 159, 0.32);
+            border-radius: 18px;
+            color: var(--muted);
+            padding: 20px;
+        }
+
+        .media-placeholder strong {
+            display: block;
+            color: var(--gold-light);
+            margin-bottom: 6px;
+            font-family: "Cinzel", serif;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .project-content {
+            position: relative;
+            z-index: 1;
+            padding: 24px;
+        }
+
+        @media (min-width: 900px) {
+            .project-content {
+                padding: 32px;
+            }
+        }
+
+        .project-label {
+            color: var(--blue-flame);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            margin-bottom: 8px;
+        }
+
+        .project-title {
+            margin: 0 0 10px;
+            font-family: "Cinzel", serif;
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            letter-spacing: 0.05em;
+        }
+
+        .project-text {
+            color: #cbc4b6;
+            margin: 0 0 18px;
             font-size: 0.95rem;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin: 18px 0;
+        }
+
+        @media (min-width: 560px) {
+            .meta-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .meta-item {
+            padding: 12px;
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(214, 180, 106, 0.15);
+        }
+
+        .meta-item span {
+            display: block;
+            color: var(--muted);
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 4px;
+        }
+
+        .meta-item strong {
             color: var(--text);
+            font-size: 0.9rem;
         }
 
-        .case-body p {
-            margin: 8px 0;
-        }
-
-        .case-list {
-            margin: 8px 0 0 18px;
-        }
-
-        .case-inline {
+        .tags {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-top: 10px;
         }
 
-        .case-pill {
-            font-size: 0.78rem;
-            padding: 4px 10px;
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            min-height: 28px;
+            padding: 5px 10px;
             border-radius: 999px;
-            background: rgba(12, 14, 35, 0.9);
-            border: 1px solid rgba(139, 92, 246, 0.7);
-            color: #e5e7ff;
+            border: 1px solid rgba(101, 215, 255, 0.24);
+            background: rgba(101, 215, 255, 0.07);
+            color: #d7ecf8;
+            font-size: 0.78rem;
         }
 
-        .case-loop {
-            margin-top: 8px;
-            padding: 12px 12px;
-            border-radius: 14px;
-            border: 1px solid rgba(139, 92, 246, 0.7);
-            background: rgba(2, 6, 23, 0.65);
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-            font-size: 0.85rem;
-            color: #e5e7ff;
-            overflow-x: auto;
+        .section-panel {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius);
+            background:
+                radial-gradient(circle at top left, rgba(214, 180, 106, 0.1), transparent 46%),
+                var(--panel);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            padding: 24px;
         }
 
-        .case-links {
+        .workflow {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
             margin-top: 14px;
-            display: flex;
-            flex-wrap: wrap;
+        }
+
+        @media (min-width: 760px) {
+            .workflow {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .step {
+            padding: 15px;
+            border-radius: 16px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(244, 223, 159, 0.14);
+        }
+
+        .step-number {
+            color: var(--gold-light);
+            font-family: "Cinzel", serif;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .step strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .step p {
+            margin: 0;
+            color: var(--muted-cool);
+            font-size: 0.86rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 10px;
         }
 
-        /* CERTIFICATES */
+        @media (min-width: 760px) {
+            .skills-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
 
-        .certs-wrapper {
-            padding: 14px 12px 16px;
-            border-radius: var(--radius-xl);
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(236, 72, 153, 0.18));
-            border: 1px solid rgba(191, 158, 255, 0.8);
-            box-shadow: var(--shadow-soft);
+        .skill-card {
+            padding: 14px;
+            border-radius: 16px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(101, 215, 255, 0.16);
+            color: #dbe7ef;
+            font-size: 0.88rem;
+        }
+
+        .compact-projects {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        @media (min-width: 760px) {
+            .compact-projects {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1000px) {
+            .compact-projects {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .compact-card {
+            padding: 18px;
+            border-radius: 18px;
+            background: var(--panel-soft);
+            border: 1px solid rgba(214, 180, 106, 0.18);
+        }
+
+        .compact-card h3 {
+            margin: 0 0 8px;
+            font-size: 1rem;
+            color: var(--gold-light);
+        }
+
+        .compact-card p {
+            margin: 0 0 12px;
+            color: var(--muted-cool);
+            font-size: 0.88rem;
         }
 
         .certs-strip {
             display: flex;
-            gap: 12px;
+            gap: 14px;
             overflow-x: auto;
-            padding-bottom: 4px;
+            padding: 4px 2px 10px;
             scroll-snap-type: x mandatory;
         }
 
         .certs-strip::-webkit-scrollbar {
-            height: 6px;
+            height: 7px;
         }
 
         .certs-strip::-webkit-scrollbar-track {
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 999px;
         }
 
         .certs-strip::-webkit-scrollbar-thumb {
-            background: linear-gradient(90deg, var(--accent), var(--accent-alt));
+            background: linear-gradient(90deg, var(--gold), var(--blue-flame));
             border-radius: 999px;
         }
 
         .cert-card {
-            flex: 0 0 auto;
-            width: 260px;
-            max-width: 80vw;
-            border-radius: 14px;
-            background: rgba(12, 14, 35, 0.96);
-            border: 1px solid rgba(199, 210, 254, 0.8);
+            flex: 0 0 250px;
             overflow: hidden;
+            border-radius: 16px;
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(244, 223, 159, 0.2);
             scroll-snap-align: start;
         }
 
-        .cert-img {
-            width: 100%;
+        .cert-card img {
             display: block;
+            width: 100%;
         }
 
-        .cert-body {
-            padding: 8px 10px 10px;
-            font-size: 0.8rem;
+        .cert-card div {
+            padding: 10px 12px 12px;
+            font-size: 0.82rem;
         }
 
-        .cert-title {
-            font-weight: 500;
+        .cert-card strong {
+            display: block;
+            color: var(--text);
             margin-bottom: 3px;
         }
 
-        .cert-meta {
-            color: var(--text-muted);
+        .cert-card span {
+            color: var(--muted);
             font-size: 0.78rem;
-        }
-
-        .cert-hint {
-            margin-top: 8px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        /* RESUME */
-
-        .resume-wrapper {
-            border-radius: var(--radius-xl);
-            background: radial-gradient(circle at top left, rgba(139, 92, 246, 0.2), transparent 55%), var(--bg-soft);
-            border: 1px solid var(--border-soft);
-            box-shadow: var(--shadow-soft);
-            padding: 14px 14px 16px;
         }
 
         .resume-frame {
             width: 100%;
-            height: 480px;
-            border-radius: 12px;
-            border: 1px solid rgba(191, 158, 255, 0.7);
-            background: #020617;
+            height: 520px;
+            border: 1px solid rgba(244, 223, 159, 0.24);
+            border-radius: 18px;
+            background: #02030a;
         }
-
-        .resume-hint {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-top: 8px;
-        }
-
-        /* FOOTER */
 
         .footer {
-            margin-top: 32px;
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border-soft);
-            padding-top: 12px;
+            margin-top: 42px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(214, 180, 106, 0.18);
+            color: var(--muted);
+            font-size: 0.82rem;
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
             justify-content: space-between;
+            gap: 12px;
         }
     </style>
 </head>
 <body>
 <div class="page">
-    <!-- HEADER -->
-    <header class="site-header">
-        <div class="header-inner">
-            <div class="name-line">
-                <div class="name">ANNA ARTIUKHOVA</div>
-                <div class="role">GAME DESIGNER</div>
-            </div>
-            <div class="sub-line">
-                <span>Game Designer | Unity Developer | C# | Prototyping &amp; Player Experience</span>
-                <span>•</span>
-                <span>Tel: +355 688 084 101</span>
-                <span>•</span>
-                <span><a href="mailto:dorov.ya.anet@gmail.com">dorov.ya.anet@gmail.com</a></span>
-                <span>•</span>
-                <span>
-                    <a href="https://www.linkedin.com/in/%D0%B0%D0%BD%D0%BD%D0%B0-%D0%B0%D1%80%D1%82%D1%8E%D1%85%D0%B2%D0%BE%D0%B2%D0%B0-700b97224" target="_blank" rel="noopener">
-                        LinkedIn
-                    </a>
-                </span>
-            </div>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <a class="brand" href="#top" aria-label="Anna Artiukhova portfolio home">
+                <span class="brand-name">Anna Artiukhova</span>
+                <span class="brand-role">Level Designer & Scene Architect</span>
+            </a>
+            <nav class="nav" aria-label="Portfolio navigation">
+                <a href="#work">Work</a>
+                <a href="#workflow">Workflow</a>
+                <a href="#skills">Skills</a>
+                <a href="#games">Earlier Projects</a>
+                <a href="#resume">Resume</a>
+                <a href="mailto:dorov.ya.anet@gmail.com">Contact</a>
+            </nav>
         </div>
     </header>
 
-    <main>
-        <!-- GAMES SECTION -->
+    <main id="top">
+        <section class="hero" aria-label="Portfolio introduction">
+            <div class="hero-content">
+                <div>
+                    <div class="eyebrow">Real-time environments</div>
+                    <h1>
+                        Level Designer
+                        <span class="hero-title-accent">& Scene Architect</span>
+                    </h1>
+                    <p class="hero-lead">
+                        I create gameplay-ready environments, VR scenes, modular level layouts, and real-time Unity spaces with focus on player flow, spatial readability, scale, and production-ready scene structure.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="#work">View Selected Work</a>
+                        <a class="btn" href="Anna_Artiukhova_Game_Designer_CV.pdf" target="_blank" rel="noopener">Open Resume</a>
+                        <a class="btn" href="https://www.linkedin.com/in/anna-artiukhova-700b97224/" target="_blank" rel="noopener">LinkedIn</a>
+                    </div>
+                </div>
+
+                <aside class="hero-panel" aria-label="Professional focus">
+                    <ul class="focus-list">
+                        <li>Gameplay spaces built around player navigation, pacing, and readability.</li>
+                        <li>VR-ready scene assembly with attention to scale, lighting, and performance-aware structure.</li>
+                        <li>Modular environments, blockouts, and engine-ready layouts for Unity projects.</li>
+                        <li>Game design background applied to level flow, objectives, and player experience.</li>
+                    </ul>
+                    <div class="stats">
+                        <div class="stat">
+                            <strong>Unity</strong>
+                            <span>URP / HDRP workflows</span>
+                        </div>
+                        <div class="stat">
+                            <strong>VR</strong>
+                            <span>scene assembly & setup</span>
+                        </div>
+                        <div class="stat">
+                            <strong>Level Flow</strong>
+                            <span>pathing & pacing</span>
+                        </div>
+                        <div class="stat">
+                            <strong>3D Scenes</strong>
+                            <span>real-time environments</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section class="section" id="work">
+            <div class="section-head">
+                <div>
+                    <div class="section-kicker">Selected Work</div>
+                    <h2>Level Design & Scene Architecture</h2>
+                </div>
+                <p class="section-description">
+                    A focused portfolio section for production-style environment work. More case studies and screenshots will be added as projects are prepared.
+                </p>
+            </div>
+
+            <div class="project-grid">
+                <article class="project-card featured">
+                    <div class="project-media">
+                        <!-- Replace with your first VR screenshot later, for example: <img src="images/vr-project-01.jpg" alt="VR environment scene in Unity" /> -->
+                        <div class="media-placeholder">
+                            <div>
+                                <strong>VR Project Screenshots</strong>
+                                Add 3 images later: overview, scene detail, and Unity/VR setup view.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-label">Current Featured Project</div>
+                        <h3 class="project-title">VR-Ready Unity Environment</h3>
+                        <p class="project-text">
+                            Created a VR-ready Unity environment combining level blockout, scene assembly, interaction setup, lighting, scale validation, and performance-aware optimization. Focused on building immersive, readable, and engine-ready gameplay spaces for real-time VR experiences.
+                        </p>
+
+                        <div class="meta-grid">
+                            <div class="meta-item">
+                                <span>Role</span>
+                                <strong>Level Designer / Scene Architect</strong>
+                            </div>
+                            <div class="meta-item">
+                                <span>Engine</span>
+                                <strong>Unity</strong>
+                            </div>
+                            <div class="meta-item">
+                                <span>Focus</span>
+                                <strong>VR environment assembly</strong>
+                            </div>
+                            <div class="meta-item">
+                                <span>Status</span>
+                                <strong>Portfolio case study in progress</strong>
+                            </div>
+                        </div>
+
+                        <div class="tags">
+                            <span class="tag">VR Environment Design</span>
+                            <span class="tag">Scene Assembly</span>
+                            <span class="tag">Scale Validation</span>
+                            <span class="tag">Lighting Setup</span>
+                            <span class="tag">Unity</span>
+                            <span class="tag">Performance-Aware Optimization</span>
+                            <span class="tag">Spatial Readability</span>
+                            <span class="tag">Real-Time Environments</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="workflow">
+            <div class="section-head">
+                <div>
+                    <div class="section-kicker">Process</div>
+                    <h2>Level Creation Workflow</h2>
+                </div>
+                <p class="section-description">
+                    A practical pipeline for turning early ideas into readable, playable, and engine-ready spaces.
+                </p>
+            </div>
+
+            <div class="section-panel">
+                <div class="workflow">
+                    <div class="step">
+                        <div class="step-number">01</div>
+                        <strong>Reference & Goals</strong>
+                        <p>Define visual direction, gameplay purpose, player fantasy, and technical constraints.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">02</div>
+                        <strong>Blockout & Scale</strong>
+                        <p>Build layout, validate proportions, test movement space, and establish readable routes.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">03</div>
+                        <strong>Scene Assembly</strong>
+                        <p>Use modular assets, landmarks, lighting, and composition to create structured spaces.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">04</div>
+                        <strong>Iteration & Polish</strong>
+                        <p>Improve navigation, readability, performance awareness, and final presentation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="skills">
+            <div class="section-head">
+                <div>
+                    <div class="section-kicker">Core Skills</div>
+                    <h2>What I Work With</h2>
+                </div>
+                <p class="section-description">
+                    Focused skills for level design, scene architecture, real-time environments, and VR-ready Unity scenes.
+                </p>
+            </div>
+
+            <div class="section-panel">
+                <div class="skills-grid">
+                    <div class="skill-card">Level Design</div>
+                    <div class="skill-card">Scene Architecture</div>
+                    <div class="skill-card">VR Environment Design</div>
+                    <div class="skill-card">Gameplay Blockout</div>
+                    <div class="skill-card">Scene Assembly</div>
+                    <div class="skill-card">Modular Level Design</div>
+                    <div class="skill-card">Player Flow</div>
+                    <div class="skill-card">Spatial Readability</div>
+                    <div class="skill-card">Scale Validation</div>
+                    <div class="skill-card">Lighting Setup</div>
+                    <div class="skill-card">Unity URP / HDRP</div>
+                    <div class="skill-card">Blender</div>
+                </div>
+            </div>
+        </section>
+
         <section class="section" id="games">
-            <div class="section-header">
-                <h2 class="section-title">Games</h2>
-                <div class="section-subtitle">Unity prototypes and complete projects published on itch.io</div>
+            <div class="section-head">
+                <div>
+                    <div class="section-kicker">Earlier Work</div>
+                    <h2>Published Unity Projects</h2>
+                </div>
+                <p class="section-description">
+                    Earlier projects showing complete Unity game loops, prototyping, interaction design, and playable builds. This section is intentionally secondary to the level design work above.
+                </p>
             </div>
 
-            <div class="games">
-                <!-- GAME 1 – Haunted House (on top) -->
-                <article class="game-card">
-                    <div class="game-info">
-                        <h3 class="game-title">Haunted House</h3>
-                        <div class="game-tags">
-                            <span class="tag">3D Adventure</span>
-                            <span class="tag">Horror</span>
-                            <span class="tag">Narrative</span>
-                            <span class="tag">Unity</span>
-                        </div>
-                        <p class="game-desc">
-                            Jimmy, a quiet boy who never enjoyed much popularity at school, suddenly finds himself
-                            trapped inside a haunted house filled with restless spirits. To escape and return to his own
-                            world, he must explore the eerie halls, solve mysteries, and confront supernatural dangers.
-                        </p>
-                        <p class="game-note">
-                            This strange and terrifying place becomes an unexpected chance for Jimmy to prove himself — 
-                            to discover courage he never knew he had and transform from an overlooked outsider into a true hero.
-                        </p>
-                    </div>
-                    <div class="game-media">
-                        <div class="video-frame">
-                            <iframe
-                                src="https://www.youtube.com/embed/C8qT8U8MosU"
-                                title="Haunted House gameplay"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen
-                            ></iframe>
-                        </div>
-                        <a class="game-link" href="https://lailllue.itch.io/hauntedhouse" target="_blank" rel="noopener">
-                            <span class="arrow">↗</span>
-                            <span>Play Haunted House on itch.io</span>
-                        </a>
-                    </div>
+            <div class="compact-projects">
+                <article class="compact-card">
+                    <h3>Haunted House</h3>
+                    <p>3D horror/adventure project with exploration, atmosphere, navigation, and environmental storytelling.</p>
+                    <a href="https://lailllue.itch.io/hauntedhouse" target="_blank" rel="noopener">View project ↗</a>
                 </article>
 
-                <!-- GAME 2 – 2D Escape Game -->
-                <article class="game-card">
-                    <div class="game-info">
-                        <h3 class="game-title">2D Escape Game</h3>
-                        <div class="game-tags">
-                            <span class="tag">2D Puzzle</span>
-                            <span class="tag">Room Escape</span>
-                            <span class="tag">Short Experience</span>
-                            <span class="tag">Unity</span>
-                        </div>
-                        <p class="game-desc">
-                            A small game with a single level where the player must find a way out of a locked room.
-                            The focus is on simple, readable interactions and clear feedback for solving the escape puzzle.
-                        </p>
-                    </div>
-                    <div class="game-media">
-                        <div class="video-frame">
-                            <iframe
-                                src="https://www.youtube.com/embed/styum9jFsus"
-                                title="2D Escape Game gameplay"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen
-                            ></iframe>
-                        </div>
-                        <a class="game-link" href="https://lailllue.itch.io/2d-escape-game" target="_blank" rel="noopener">
-                            <span class="arrow">↗</span>
-                            <span>Play 2D Escape Game on itch.io</span>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- GAME 3 – At the Edge of Galaxy -->
-                <article class="game-card">
-                    <div class="game-info">
-                        <h3 class="game-title">At the Edge of Galaxy</h3>
-                        <div class="game-tags">
-                            <span class="tag">3D Platformer</span>
-                            <span class="tag">Sci-Fi</span>
-                            <span class="tag">Exploration</span>
-                            <span class="tag">Unity</span>
-                        </div>
-                        <p class="game-desc">
-                            A 3D platformer where a small robot explores a distant, unfamiliar planet inhabited by
-                            hostile machines. The game focuses on traversal, jumping challenges, and learning the
-                            layout of the alien environment.
-                        </p>
-                    </div>
-                    <div class="game-media">
-                        <div class="video-frame">
-                            <iframe
-                                src="https://www.youtube.com/embed/k8MwqewVJ-Q"
-                                title="At the Edge of Galaxy gameplay"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen
-                            ></iframe>
-                        </div>
-                        <a class="game-link" href="https://lailllue.itch.io/at-the-adge-of-galaxy" target="_blank" rel="noopener">
-                            <span class="arrow">↗</span>
-                            <span>Play At the Edge of Galaxy on itch.io</span>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- GAME 4 – Game Demon -->
-                <article class="game-card">
-                    <div class="game-info">
-                        <h3 class="game-title">Game Demon</h3>
-                        <div class="game-tags">
-                            <span class="tag">2D Action</span>
-                            <span class="tag">Pixel Art</span>
-                            <span class="tag">Fantasy</span>
-                            <span class="tag">Unity</span>
-                        </div>
-                        <p class="game-desc">
-                            A 2D pixel art game in a fantasy setting with atmospheric music. The focus is on combat,
-                            moment-to-moment feel and creating a satisfying game flow for the player.
-                        </p>
-                    </div>
-                    <div class="game-media">
-                        <div class="video-frame">
-                            <iframe
-                                src="https://www.youtube.com/embed/XYhtdtHDGMY"
-                                title="Game Demon gameplay"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen
-                            ></iframe>
-                        </div>
-                        <a class="game-link" href="https://lailllue.itch.io/2d-game-demon" target="_blank" rel="noopener">
-                            <span class="arrow">↗</span>
-                            <span>Play Game Demon on itch.io</span>
-                        </a>
-                    </div>
+                <article class="compact-card">
+                    <h3>2D Escape Game</h3>
+                    <p>Small room escape project focused on simple interactions, puzzle readability, and clear player feedback.</p>
+                    <a href="https://lailllue.itch.io/2d-escape-game" target="_blank" rel="noopener">View project ↗</a>
                 </article>
             </div>
         </section>
 
-        <!-- CASE STUDIES SECTION -->
-        <section class="section" id="case-studies">
-            <div class="section-header">
-                <h2 class="section-title">Case Studies</h2>
-                <div class="section-subtitle">Deep-dive design breakdowns (role, loop, feel, iteration)</div>
-            </div>
-
-            <div class="case-studies">
-                <details class="case-item">
-                    <summary>
-                        <div class="case-title">
-                            <h3>Game Demon — Gameplay Design Case</h3>
-                            <div class="case-meta">2D Action • Unity • Combat feel, pacing, difficulty</div>
-                        </div>
-                        <div class="case-chevron">⌄</div>
-                    </summary>
-
-                    <div class="case-body">
-                        <p><strong>Role:</strong> Game Designer (Gameplay &amp; Systems)</p>
-
-                        <div class="case-inline">
-                            <span class="case-pill">Core loop</span>
-                            <span class="case-pill">Moment-to-moment feel</span>
-                            <span class="case-pill">Difficulty ramp</span>
-                            <span class="case-pill">Playtesting &amp; iteration</span>
-                        </div>
-
-                        <h4>Project Summary</h4>
-                        <p>
-                            A 2D pixel-art action prototype focused on responsive combat, readable enemy encounters,
-                            and a satisfying flow across short levels. The design goal was to tune moment-to-moment
-                            feel (timing + feedback) while keeping difficulty progression fair and learnable.
-                        </p>
-
-                        <h4>Core Gameplay Loop</h4>
-                        <div class="case-loop">
-                            Enter level → Encounter enemies → Engage in combat → Defeat enemies → Collect rewards → Progress
-                        </div>
-
-                        <p><strong>Player verbs:</strong> Move, Attack, Dodge, Time, React</p>
-                        <p><strong>Success:</strong> Clear the encounter and survive with at least 1 HP.</p>
-                        <p><strong>Fail:</strong> HP reaches zero → restart encounter.</p>
-
-                        <h4>Moment-to-Moment Feel</h4>
-                        <ul class="case-list">
-                            <li><strong>Timing:</strong> tuned attack windows to feel responsive while discouraging button mashing.</li>
-                            <li><strong>Readability:</strong> enemy attacks include clear anticipation/wind-up cues.</li>
-                            <li><strong>Feedback layers:</strong> reinforced hits via animation timing + VFX/SFX for clarity.</li>
-                            <li><strong>Impact:</strong> short hit-stop on confirmed hits to emphasize weight and satisfaction.</li>
-                        </ul>
-
-                        <h4>Level &amp; Difficulty Flow</h4>
-                        <ul class="case-list">
-                            <li>Early encounters introduce rules with simpler enemy patterns.</li>
-                            <li>Difficulty ramps through enemy combinations and positioning pressure (not just stats).</li>
-                            <li>Levels structured as: learn → practice → pressure.</li>
-                        </ul>
-
-                        <h4>Playtesting &amp; Iteration</h4>
-                        <p><strong>Observed issue:</strong> Players missed enemy attack timing, especially with multiple enemies on screen.</p>
-                        <p><strong>Changes:</strong></p>
-                        <ul class="case-list">
-                            <li>Extended wind-up animations and strengthened danger cues.</li>
-                            <li>Adjusted cooldowns to reduce unfair simultaneous attacks.</li>
-                            <li>Refined feedback (VFX/SFX) to make hit confirmation clearer.</li>
-                        </ul>
-
-                        <h4>What This Project Demonstrates</h4>
-                        <ul class="case-list">
-                            <li>Ownership of core loop and goals</li>
-                            <li>Moment-to-moment gameplay tuning (timing, feedback, readability)</li>
-                            <li>Level pacing and difficulty progression</li>
-                            <li>Iterative design informed by playtesting</li>
-                        </ul>
-
-                        <div class="case-links">
-                            <a class="game-link" href="https://lailllue.itch.io/2d-game-demon" target="_blank" rel="noopener">
-                                <span class="arrow">↗</span>
-                                <span>Play Game Demon on itch.io</span>
-                            </a>
-                        </div>
-                    </div>
-                </details>
-            </div>
-        </section>
-
-        <!-- CERTIFICATES SECTION -->
         <section class="section" id="certificates">
-            <div class="section-header">
-                <h2 class="section-title">Certificates</h2>
-                <div class="section-subtitle">Selected online courses in game design &amp; development</div>
+            <div class="section-head">
+                <div>
+                    <div class="section-kicker">Learning</div>
+                    <h2>Certificates</h2>
+                </div>
+                <p class="section-description">
+                    Selected courses in game design, Unity, and game development foundations.
+                </p>
             </div>
 
-            <div class="certs-wrapper">
+            <div class="section-panel">
                 <div class="certs-strip">
                     <div class="cert-card">
-                        <img class="cert-img" src="certs/coursera-2d-shooter.jpg" alt="Game Design and Development 1: 2D Shooter certificate" />
-                        <div class="cert-body">
-                            <div class="cert-title">Game Design and Development 1: 2D Shooter</div>
-                            <div class="cert-meta">Michigan State University • Coursera • 2025</div>
+                        <img src="certs/coursera-2d-shooter.jpg" alt="Game Design and Development 1: 2D Shooter certificate" />
+                        <div>
+                            <strong>Game Design and Development 1: 2D Shooter</strong>
+                            <span>Michigan State University • Coursera • 2025</span>
                         </div>
                     </div>
-
                     <div class="cert-card">
-                        <img class="cert-img" src="certs/coursera-3d-platformer.jpg" alt="Game Design and Development 4: 3D Platformer certificate" />
-                        <div class="cert-body">
-                            <div class="cert-title">Game Design and Development 4: 3D Platformer</div>
-                            <div class="cert-meta">Michigan State University • Coursera • 2025</div>
+                        <img src="certs/coursera-3d-platformer.jpg" alt="Game Design and Development 4: 3D Platformer certificate" />
+                        <div>
+                            <strong>Game Design and Development 4: 3D Platformer</strong>
+                            <span>Michigan State University • Coursera • 2025</span>
                         </div>
                     </div>
-
                     <div class="cert-card">
-                        <img class="cert-img" src="certs/coursera-intro-csharp-unity.jpg" alt="Introduction to C# Programming and Unity certificate" />
-                        <div class="cert-body">
-                            <div class="cert-title">Introduction to C# Programming and Unity</div>
-                            <div class="cert-meta">University of Colorado System • Coursera • 2024</div>
+                        <img src="certs/coursera-intro-csharp-unity.jpg" alt="Introduction to C# Programming and Unity certificate" />
+                        <div>
+                            <strong>Introduction to C# Programming and Unity</strong>
+                            <span>University of Colorado System • Coursera • 2024</span>
                         </div>
                     </div>
-
                     <div class="cert-card">
-                        <img class="cert-img" src="certs/coursera-more-csharp-unity.jpg" alt="More C# Programming and Unity certificate" />
-                        <div class="cert-body">
-                            <div class="cert-title">More C# Programming and Unity</div>
-                            <div class="cert-meta">University of Colorado System • Coursera • 2025</div>
+                        <img src="certs/coursera-more-csharp-unity.jpg" alt="More C# Programming and Unity certificate" />
+                        <div>
+                            <strong>More C# Programming and Unity</strong>
+                            <span>University of Colorado System • Coursera • 2025</span>
                         </div>
                     </div>
-                </div>
-                <div class="cert-hint">
-                    Scroll horizontally to browse certificates (trackpad, Shift + mouse wheel, or swipe on touch devices).
                 </div>
             </div>
         </section>
 
-        <!-- RESUME SECTION -->
         <section class="section" id="resume">
-            <div class="section-header">
-                <h2 class="section-title">Resume</h2>
-                <div class="section-subtitle">PDF embedded with its own scroll inside the frame</div>
+            <div class="section-head">
+                <div>
+                    <div class="section-kicker">CV</div>
+                    <h2>Resume</h2>
+                </div>
+                <p class="section-description">
+                    The resume file name can be updated later after the CV is redesigned for Level Designer / Scene Architect roles.
+                </p>
             </div>
 
-            <div class="resume-wrapper">
-                <iframe
-                    class="resume-frame"
-                    src="Anna_Artiukhova_Game_Designer_CV.pdf"
-                    title="Resume PDF"
-                ></iframe>
-                <div class="resume-hint">
-                    If the PDF does not display, your browser may be blocking embedded PDFs.
-                    In that case, open the file directly from the GitHub repository.
-                </div>
+            <div class="section-panel">
+                <iframe class="resume-frame" src="Anna_Artiukhova_Game_Designer_CV.pdf" title="Anna Artiukhova resume PDF"></iframe>
             </div>
         </section>
     </main>
 
     <footer class="footer">
         <span>© <span id="year"></span> Anna Artiukhova</span>
-        <span>Built as a game design portfolio (GitHub Pages)</span>
+        <span>Level Design • Scene Architecture • Real-Time Environments</span>
+        <span><a href="mailto:dorov.ya.anet@gmail.com">dorov.ya.anet@gmail.com</a></span>
     </footer>
 </div>
 
 <script>
-    // simple script to always show current year in the footer
     document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 </body>
