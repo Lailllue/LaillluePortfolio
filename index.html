@@ -232,6 +232,7 @@
         .case-hero-media img {
             width: 100%; height: 100%; min-height: 280px;
             object-fit: cover; display: block;
+            cursor: zoom-in;
         }
         .ph {
             display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -279,6 +280,7 @@
             object-fit: cover;
             display: block;
         }
+        .process-media img { cursor: zoom-in; }
         .process-media .ph { min-height: 150px; padding: 16px 10px; }
         .process-media .ph svg { width: 32px; height: 32px; }
         .case-body { padding: 18px 22px 22px; }
@@ -356,6 +358,40 @@
             color: var(--muted); font-size: 0.8rem;
             display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px;
         }
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.92);
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        .lightbox.is-open { display: flex; }
+        .lightbox img {
+            max-width: min(96vw, 1200px);
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.55);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            border: 0;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.12);
+            color: #fff;
+            font-size: 1.7rem;
+            line-height: 1;
+            cursor: pointer;
+        }
+        .lightbox-close:hover { background: rgba(255,255,255,0.22); }
     </style>
 </head>
 <body>
@@ -639,6 +675,48 @@
         <span><a href="mailto:annabobrenkold@gmail.com">annabobrenkold@gmail.com</a></span>
     </footer>
 </div>
-<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+    <button class="lightbox-close" type="button" aria-label="Close">×</button>
+    <img src="" alt="Preview">
+</div>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+(function () {
+    const lightbox = document.getElementById("lightbox");
+    const lbImg = lightbox.querySelector("img");
+    const closeBtn = lightbox.querySelector(".lightbox-close");
+
+    function openLightbox(src, alt) {
+        lbImg.src = src;
+        lbImg.alt = alt || "Preview";
+        lightbox.classList.add("is-open");
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove("is-open");
+        lbImg.src = "";
+        document.body.style.overflow = "";
+    }
+
+    document.querySelectorAll(".case-hero-media img, .process-media img").forEach(function (img) {
+        img.addEventListener("click", function () {
+            openLightbox(img.src, img.alt);
+        });
+    });
+
+    closeBtn.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", function (e) {
+        if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && lightbox.classList.contains("is-open")) closeLightbox();
+    });
+})();
+</script>
 </body>
 </html>
+
