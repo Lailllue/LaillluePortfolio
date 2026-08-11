@@ -73,8 +73,6 @@
             padding: 20px 16px 64px;
         }
         @media (min-width: 820px) { .page { padding: 26px 24px 80px; } }
-
-        /* Topbar */
         .topbar {
             position: sticky; top: 0; z-index: 20;
             margin: 0 auto 20px;
@@ -100,8 +98,6 @@
         }
         .nav a:hover { color: var(--text); background: rgba(214, 180, 106, 0.1); }
         @media (min-width: 820px) { .nav { display: flex; } }
-
-        /* Hero */
         .hero {
             position: relative; overflow: hidden;
             border-radius: var(--radius-lg);
@@ -177,8 +173,6 @@
         }
         .stat strong { display: block; font-family: "Cinzel", serif; color: var(--gold-light); font-size: 1rem; }
         .stat span { display: block; color: var(--muted); font-size: 0.74rem; margin-top: 2px; }
-
-        /* Sections */
         .section { margin-top: 48px; }
         .section-head {
             display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px;
@@ -196,8 +190,6 @@
             letter-spacing: 0.05em; text-transform: uppercase;
         }
         .section-description { max-width: 480px; color: var(--muted-cool); font-size: 0.9rem; margin: 0; }
-
-        /* ========== CASE STUDY CARDS ========== */
         .case {
             border-radius: var(--radius);
             background: var(--panel-strong);
@@ -206,9 +198,7 @@
             overflow: hidden;
             margin-bottom: 22px;
         }
-        .case-header {
-            padding: 22px 22px 0;
-        }
+        .case-header { padding: 22px 22px 0; }
         @media (min-width: 760px) { .case-header { padding: 26px 28px 0; } }
         .case-label {
             color: var(--blue-flame); font-size: 0.74rem;
@@ -228,8 +218,6 @@
             margin-bottom: 16px; font-size: 0.82rem; color: var(--muted-cool);
         }
         .case-meta strong { color: var(--text); font-weight: 600; }
-
-        /* Final / Gameplay hero image */
         .case-hero-media {
             position: relative;
             min-height: 280px;
@@ -253,8 +241,6 @@
         .ph svg { width: 42px; height: 42px; opacity: 0.5; stroke: var(--gold); }
         .ph span { font-size: 0.82rem; letter-spacing: 0.03em; }
         .ph small { font-size: 0.72rem; color: var(--muted); opacity: 0.85; }
-
-        /* Process strip: Blockout | Layout/Greybox | Final */
         .process-strip {
             display: grid;
             grid-template-columns: 1fr;
@@ -284,14 +270,17 @@
             min-height: 150px;
             display: flex; align-items: center; justify-content: center;
             background: linear-gradient(160deg, #121a28, #080c14);
+            overflow: hidden;
         }
-        .process-media img {
-            width: 100%; height: 150px; object-fit: cover; display: block;
+        .process-media img,
+        .process-media video {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: block;
         }
         .process-media .ph { min-height: 150px; padding: 16px 10px; }
         .process-media .ph svg { width: 32px; height: 32px; }
-
-        /* Results + tags */
         .case-body { padding: 18px 22px 22px; }
         @media (min-width: 760px) { .case-body { padding: 20px 28px 26px; } }
         .results {
@@ -309,8 +298,6 @@
             background: rgba(101, 215, 255, 0.06);
             color: #d0e8f5; font-size: 0.74rem;
         }
-
-        /* Secondary cases (smaller) */
         .case-grid {
             display: grid; grid-template-columns: 1fr; gap: 16px;
         }
@@ -319,12 +306,11 @@
         .case-sm .case-hero-media img { min-height: 180px; }
         .case-sm .process-strip { grid-template-columns: 1fr 1fr; }
         .case-sm .process-media { min-height: 110px; }
-        .case-sm .process-media img { height: 110px; }
+        .case-sm .process-media img,
+        .case-sm .process-media video { height: 110px; }
         .case-sm .process-media .ph { min-height: 110px; }
         .case-sm .case-title { font-size: 1.2rem; }
         .case-sm .case-summary { font-size: 0.86rem; }
-
-        /* Workflow */
         .section-panel {
             border-radius: var(--radius);
             background: radial-gradient(circle at top left, rgba(214, 180, 106, 0.08), transparent 46%), var(--panel);
@@ -347,8 +333,6 @@
         }
         .step strong { display: block; margin-bottom: 4px; font-size: 0.92rem; }
         .step p { margin: 0; color: var(--muted-cool); font-size: 0.82rem; }
-
-        /* Skills */
         .skills-grid {
             display: grid; grid-template-columns: repeat(2, 1fr); gap: 9px;
         }
@@ -359,8 +343,6 @@
             border: 1px solid rgba(101, 215, 255, 0.14);
             color: #d5e4ef; font-size: 0.86rem;
         }
-
-        /* Resume */
         .resume-cta {
             display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
             gap: 16px; padding: 22px 24px; border-radius: var(--radius);
@@ -368,7 +350,6 @@
             border: 1px solid var(--border);
         }
         .resume-cta p { margin: 0; color: var(--muted-cool); font-size: 0.92rem; max-width: 480px; }
-
         .footer {
             margin-top: 48px; padding-top: 18px;
             border-top: 1px solid rgba(214, 180, 106, 0.16);
@@ -394,9 +375,7 @@
             </nav>
         </div>
     </header>
-
     <main id="top">
-        <!-- HERO -->
         <section class="hero">
             <div class="hero-content">
                 <div>
@@ -430,8 +409,6 @@
                 </aside>
             </div>
         </section>
-
-        <!-- WORK -->
         <section class="section" id="work">
             <div class="section-head">
                 <div>
@@ -439,11 +416,9 @@
                     <h2>Case Studies</h2>
                 </div>
                 <p class="section-description">
-                    Each project shows process (blockout → layout → final) and measurable results. Drop screenshots into the marked slots.
+                    Each project shows process (blockout → layout → final) and measurable results.
                 </p>
             </div>
-
-            <!-- ========== MIMESIS (FEATURED CASE) ========== -->
             <article class="case">
                 <div class="case-header">
                     <div class="case-label">Featured · 2025–2026 · ReLU Games</div>
@@ -457,23 +432,17 @@
                         <span>Focus: <strong>Co-op horror · AI encounters</strong></span>
                     </div>
                 </div>
-
-                <!-- FINAL / GAMEPLAY hero -->
                 <div class="case-hero-media">
-                    <!-- Replace this whole placeholder with: <img src="images/mimesis-final-01.jpg" alt="MIMESIS final gameplay view"> -->
                     <div class="ph">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z"/></svg>
                         <span>Final / Gameplay screenshot</span>
                         <small>images/mimesis-final-01.jpg</small>
                     </div>
                 </div>
-
-                <!-- PROCESS STRIP -->
                 <div class="process-strip">
                     <div class="process-cell">
                         <div class="process-label">01 · Blockout</div>
                         <div class="process-media">
-                            <!-- <img src="images/mimesis-blockout.jpg" alt="MIMESIS blockout"> -->
                             <div class="ph">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z"/></svg>
                                 <span>Blockout</span>
@@ -484,18 +453,14 @@
                     <div class="process-cell">
                         <div class="process-label">02 · Layout / Flow</div>
                         <div class="process-media">
-                            <!-- <img src="images/mimesis-layout.jpg" alt="MIMESIS top-down or greybox"> -->
-                            <div class="ph">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z"/></svg>
-                                <span>Top-down / Greybox</span>
-                                <small>mimesis-layout.jpg</small>
-                            </div>
+                            <video controls playsinline preload="metadata" title="MIMESIS Layout / Flow">
+                                <source src="videos/mimesis-layout-flow.mp4" type="video/mp4">
+                            </video>
                         </div>
                     </div>
                     <div class="process-cell">
                         <div class="process-label">03 · Atmosphere</div>
                         <div class="process-media">
-                            <!-- <img src="images/mimesis-atmosphere.jpg" alt="MIMESIS lighting pass"> -->
                             <div class="ph">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z"/></svg>
                                 <span>Lighting / Final</span>
@@ -504,7 +469,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="case-body">
                     <ul class="results">
                         <li>6 multiplayer maps + 3 station/tram zones shipped</li>
@@ -523,10 +487,7 @@
                     </div>
                 </div>
             </article>
-
-            <!-- ========== MOSS + VSQUAD ========== -->
             <div class="case-grid">
-                <!-- MOSS -->
                 <article class="case case-sm">
                     <div class="case-header">
                         <div class="case-label">2022–2025 · Polyarc</div>
@@ -549,15 +510,11 @@
                     <div class="process-strip">
                         <div class="process-cell">
                             <div class="process-label">Blockout</div>
-                            <div class="process-media">
-                                <div class="ph"><span>moss-blockout.jpg</span></div>
-                            </div>
+                            <div class="process-media"><div class="ph"><span>moss-blockout.jpg</span></div></div>
                         </div>
                         <div class="process-cell">
                             <div class="process-label">Final / Atmosphere</div>
-                            <div class="process-media">
-                                <div class="ph"><span>moss-atmosphere.jpg</span></div>
-                            </div>
+                            <div class="process-media"><div class="ph"><span>moss-atmosphere.jpg</span></div></div>
                         </div>
                     </div>
                     <div class="case-body">
@@ -573,8 +530,6 @@
                         </div>
                     </div>
                 </article>
-
-                <!-- VSQUAD -->
                 <article class="case case-sm">
                     <div class="case-header">
                         <div class="case-label">2022–2023 · VSquad</div>
@@ -597,15 +552,11 @@
                     <div class="process-strip">
                         <div class="process-cell">
                             <div class="process-label">Blockout</div>
-                            <div class="process-media">
-                                <div class="ph"><span>vsquad-blockout.jpg</span></div>
-                            </div>
+                            <div class="process-media"><div class="ph"><span>vsquad-blockout.jpg</span></div></div>
                         </div>
                         <div class="process-cell">
                             <div class="process-label">Greybox</div>
-                            <div class="process-media">
-                                <div class="ph"><span>vsquad-greybox.jpg</span></div>
-                            </div>
+                            <div class="process-media"><div class="ph"><span>vsquad-greybox.jpg</span></div></div>
                         </div>
                     </div>
                     <div class="case-body">
@@ -624,8 +575,6 @@
                 </article>
             </div>
         </section>
-
-        <!-- WORKFLOW -->
         <section class="section" id="workflow">
             <div class="section-head">
                 <div>
@@ -659,8 +608,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- SKILLS -->
         <section class="section" id="skills">
             <div class="section-head">
                 <div>
@@ -689,8 +636,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- RESUME -->
         <section class="section" id="resume">
             <div class="section-head">
                 <div>
@@ -701,14 +646,13 @@
             <div class="resume-cta">
                 <p>Full resume with quantified results from MIMESIS, Moss: The Forgotten Relic, and earlier production work.</p>
                 <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                    <a class="btn btn-primary" href="Resume_Anna_Bobrenko_Level_Designer_EN.docx" target="_blank" rel="noopener">Download PDF</a>
+                    <a class="btn btn-primary" href="Resume_Anna_Bobrenko_Level_Designer_EN.docx" target="_blank" rel="noopener">Download Resume</a>
                     <a class="btn" href="https://www.linkedin.com/in/anna-artiukhova-700b97224/" target="_blank" rel="noopener">LinkedIn</a>
                     <a class="btn" href="mailto:annabobrenkold@gmail.com">Email</a>
                 </div>
             </div>
         </section>
     </main>
-
     <footer class="footer">
         <span>© <span id="year"></span> Anna Bobrenko</span>
         <span>Level Design · Scene Architecture · Real-Time Environments</span>
@@ -718,4 +662,3 @@
 <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
-
